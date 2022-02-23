@@ -1,14 +1,7 @@
 <template>
-  <q-card class="q-pa-md bg-white" flat>
+  <q-card class="q-pa-md shadow-5" >
     <slot></slot>
   </q-card>
 </template>
 
-<script>
-export default {
-  // name: 'ComponentName',
-  setup() {
-    return {};
-  },
-};
-</script>
+

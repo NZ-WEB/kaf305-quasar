@@ -1,5 +1,4 @@
 <template>
-  <q-drawer v-model="props.isleftDrawerOpen" show-if-above>
     <app-card>
       <q-img src="https://cdn.quasar.dev/img/parallax2.jpg" />
 
@@ -37,15 +36,16 @@
         </div>
       </q-slide-transition>
     </app-card>
-  </q-drawer>
 </template>
 
 <script lang="ts">
 import { ref } from 'vue';
+import AppCard from 'components/AppCard.vue';
 
 export default {
+  components: {AppCard},
   props: {
-    isleftDrawerOpen: {
+    isLeftDrawerOpen: {
       type: Boolean,
       default: false,
     },
