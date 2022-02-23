@@ -1,41 +1,59 @@
 <template>
-    <app-card>
-      <q-img src="https://cdn.quasar.dev/img/parallax2.jpg" />
+  <app-card class="q-ma-md">
+    <q-card-section>
+      <div class="text-h6">Меню</div>
+      <div class="text-subtitle2">Кафедра 305</div>
 
-      <q-card-section>
-        <div class="text-overline text-orange-9">Overline</div>
-        <div class="text-h5 q-mt-sm q-mb-xs">Title</div>
-        <div class="text-caption text-grey">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </div>
-      </q-card-section>
+      <q-list>
+        <q-item clickable v-ripple>
+          <q-item-section>Single line item</q-item-section>
+        </q-item>
 
-      <q-card-actions>
-        <q-btn flat color="dark" label="Share" />
-        <q-btn flat color="primary" label="Book" />
+        <q-item clickable v-ripple>
+          <q-item-section>
+            <q-item-label>Item with caption</q-item-label>
+            <q-item-label caption>Caption</q-item-label>
+          </q-item-section>
+        </q-item>
 
-        <q-space />
+        <q-item clickable v-ripple>
+          <q-item-section>
+            <q-item-label overline>OVERLINE</q-item-label>
+            <q-item-label>Item with caption</q-item-label>
+          </q-item-section>
+        </q-item>
 
-        <q-btn
-          color="grey"
-          round
-          flat
-          dense
-          :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
-          @click="expanded = !expanded"
-        />
-      </q-card-actions>
+        <q-item clickable v-ripple>
+          <q-item-section>
+            <q-item-label overline>OVERLINE</q-item-label>
+            <q-item-label>Item with caption</q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </q-card-section>
 
-      <q-slide-transition>
-        <div v-show="expanded">
-          <q-separator />
-          <q-card-section class="text-subitle2">
-            {{ lorem }}
-          </q-card-section>
-        </div>
-      </q-slide-transition>
-    </app-card>
+    <q-card-actions>
+      <q-space />
+
+      <q-btn
+        color="grey"
+        round
+        flat
+        dense
+        :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+        @click="expanded = !expanded"
+      />
+    </q-card-actions>
+
+    <q-slide-transition>
+      <div v-show="expanded">
+        <q-separator />
+        <q-card-section class="text-subitle2">
+          {{ lorem }}
+        </q-card-section>
+      </div>
+    </q-slide-transition>
+  </app-card>
 </template>
 
 <script lang="ts">
@@ -43,7 +61,7 @@ import { ref } from 'vue';
 import AppCard from 'components/AppCard.vue';
 
 export default {
-  components: {AppCard},
+  components: { AppCard },
   props: {
     isLeftDrawerOpen: {
       type: Boolean,
@@ -54,10 +72,13 @@ export default {
   // name: 'ComponentName',
   setup() {
     const expanded = ref(false);
+    const tabs = ref('mail');
 
     return {
       expanded,
-      lorem: 'Lorem ipsum dol',
+      tabs,
+      lorem:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde reiciendis magnam iure enim sit itaque illum distinctio porro laborum, tempore dolorum voluptas eaque eos. Mollitia nulla dolorem illo cumque quibusdam.',
     };
   },
 };
