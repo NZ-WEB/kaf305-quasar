@@ -2,67 +2,53 @@
   <q-layout view="hHh Lpr lff">
     <q-header>
       <q-toolbar>
-        <q-btn
-          aria-label="Menu"
-          dense
+        <q-btn flat round dense icon="menu" class="q-mr-sm" />
+
+        <q-space />
+
+        <q-btn-toggle
+          v-model="model"
           flat
-          icon="menu"
-          round
-          @click="toggleLeftDrawer"
+          stretch
+          toggle-color="yellow"
+          :options="options"
         />
-
-      <q-toolbar-title> Quasar App</q-toolbar-title>
-
-      <q-btn
-        aria-label="dark mode"
-        dense
-        flat
-        icon="settings"
-        round
-        @click="toggleDarkMode"
-      />
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="isLeftDrawerOpen" show-if-above>
-      <the-drawer :is-left-drawer-open="isLeftDrawerOpen"/>
-    </q-drawer>
+    <!-- <the-drawer :isleftDrawerOpen="isleftDrawerOpen" /> -->
 
     <q-page-container>
-      <router-view/>
+      <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from 'vue';
-import {useQuasar} from 'quasar';
-
+import { defineComponent, ref } from 'vue';
 import TheDrawer from 'src/components/TheDrawer.vue';
 
 export default defineComponent({
   name: 'MainLayout',
   setup() {
-    const isLeftDrawerOpen = ref(false);
-    const $q = useQuasar()
+    // const isleftDrawerOpen = ref(false);
+    const model = ref('one');
 
     const toggleLeftDrawer = () => {
-      isLeftDrawerOpen.value = !isLeftDrawerOpen.value;
-    };
-
-    const toggleDarkMode = () => {
-      console.log(console.log($q.dark.isActive))
-      $q.dark.toggle()
+      // isleftDrawerOpen.value = !isleftDrawerOpen.value;
     };
 
     return {
-      isLeftDrawerOpen,
+      model,
+      // isleftDrawerOpen,
       toggleLeftDrawer,
-      toggleDarkMode,
+      options: [
+        { label: 'One', value: 'one' },
+        { label: 'Two', value: 'two' },
+        { label: 'Three', value: 'three' },
+      ],
     };
   },
-  components: {TheDrawer},
+  // components: { TheDrawer },
 });
 </script>
